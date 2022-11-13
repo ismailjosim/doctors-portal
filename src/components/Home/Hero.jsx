@@ -11,7 +11,7 @@ const Hero = () => {
                     <p className="mt-6 mb-8 text-base sm:mb-12 lg:text-justify leading-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                     </p>
                     <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-                        <button className='btn btn-primary text-white bg-gradient-to-r from-[#19D3AE -22.5%] to-[#0FCFEC 120.83%]'>Get Started</button>
+                        <button className='btn btn-primary text-white bg-gradient-to-r from-primary to-accent'>Get Started</button>
                     </div>
                 </div>
                 <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">

@@ -8,27 +8,29 @@ const CallToAction = () => {
     const ctaData = [
         {
             id: 1,
-            heading: "Opening Hours",
-            bodyText: 'Lorem Ipsum is simply dummy text of the pri',
-            bg: 'bg-gradient-to-r from-[#19D3AE -38.67%] to-[ #0FCFEC 129.78%]',
+            heading: "Working Hours",
+            bodyText: 'From 8.00AM - To 6.00PM',
+            bgClass: 'bg-gradient-to-r from-primary to-accent',
             img: clock
         },
         {
-            id: 1, heading: "Visit our location", bodyText: 'Brooklyn, NY 10036, United States', bg: '#3A4256', img: marker
+            id: 2, heading: "Visit our location", bodyText: 'Brooklyn, NY 10036, United States', bgClass: 'bg-secondary', img: marker
         }
         ,
         {
-            id: 1, heading: "Opening Hours", bodyText: 'Lorem Ipsum is simply dummy text of the pri', bg: 'bg-gradient-to-r from-[#19D3AE -38.67%] to-[ #0FCFEC 129.78%],', img: phone
+            id: 3, heading: "Opening Hours", bodyText: '+000 123 456789', bgClass: 'bg-gradient-to-r from-accent to-primary', img: phone
         }
     ]
 
 
     return (
-        <div>
-            {
-                ctaData.map(data => <CtaCard key={data.id} data={data}></CtaCard>)
-            }
-        </div>
+        <section className='mb-32 mt-16'>
+            <div className='w-11/12 mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6'>
+                {
+                    ctaData.map(data => <CtaCard key={data.id} data={data}></CtaCard>)
+                }
+            </div>
+        </section>
     );
 };
 

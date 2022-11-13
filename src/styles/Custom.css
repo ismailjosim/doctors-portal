@@ -1,1 +1,5 @@
-
+.custom-bg {
+    background-image: url(../assets/images/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

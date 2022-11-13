@@ -1,12 +1,18 @@
-import { Button } from '@chakra-ui/react';
+
 import React from 'react';
+import CallToAction from './CallToAction';
+import Hero from './Hero';
+
 
 const Home = () => {
+
+
+
     return (
-        <div>
-            <Button colorScheme='blue'>Button</Button>
-            <Button colorScheme='facebook'>button 2</Button>
-        </div>
+        <section>
+            <Hero />
+            <CallToAction />
+        </section>
     );
 };
 

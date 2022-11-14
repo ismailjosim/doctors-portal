@@ -5,7 +5,7 @@ import '../../styles/Custom.css'
 const Hero = () => {
     return (
         <section className='custom-bg bg-slate-50 lg:py-20 py-5'>
-            <div className="container mx-auto  flex lg:flex-row flex-col-reverse justify-between">
+            <div className="container mx-auto flex lg:flex-row flex-col-reverse justify-between">
                 <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                     <h1 className="text-3xl font-bold sm:text-6xl">Your New Smile Starts Here</h1>
                     <p className="mt-6 mb-8 text-base sm:mb-12 lg:text-justify leading-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the

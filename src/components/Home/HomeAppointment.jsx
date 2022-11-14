@@ -15,7 +15,7 @@ const HomeAppointment = () => {
                 <div className="flex flex-col justify-center lg:max-w-md xl:max-w-lg py-8">
                     <h4 className='text-primary font-bold text-xl'>Appointment</h4>
                     <h2 className="text-2xl font-bold sm:text-3xl">Make an appointment Today</h2>
-                    <p className="text-base my-6 lg:text-justify leading-6">
+                    <p className="text-base leading-6">
                         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum that it has a more-or-less normal distribution of letters,as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page
                     </p>
                     <div>

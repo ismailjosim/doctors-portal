@@ -3,7 +3,7 @@ import featuredImg from '../../assets/images/treatment.png'
 
 const Featured = () => {
     return (
-        <section className='lg:py-18 py-5'>
+        <section className='lg:py-18 py-5 lg:mb-60'>
             <div className="container mx-auto flex lg:flex-row flex-col justify-center lg:gap-24 sm:gap-5">
                 <div className="flex items-center justify-center mx-12">
                     <img src={featuredImg} alt="" className="lg:h-[576px] h-full rounded-lg" />

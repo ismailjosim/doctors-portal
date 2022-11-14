@@ -2,6 +2,7 @@ import React from 'react';
 import CallToAction from './CallToAction';
 import Featured from './Featured';
 import Hero from './Hero';
+import HomeAppointment from './HomeAppointment';
 import HomeServices from './HomeServices';
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <CallToAction />
             <HomeServices />
             <Featured />
+            <HomeAppointment />
         </section>
     );
 };

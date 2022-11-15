@@ -12,3 +12,10 @@
     background-position: center center;
     background-size: cover;
 }
+
+.bg-footer-custom {
+    background-image: url(../assets/images/footer.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

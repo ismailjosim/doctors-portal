@@ -12,7 +12,12 @@ const AppOption = ({ option, setService }) => {
                 </div>
 
                 <div className="card-actions justify-center">
-                    <label onClick={() => setService(option)} htmlFor="booking-modal" className="btn btn-primary text-white">Book Appointment</label>
+                    <label
+                        onClick={() => setService(option)}
+                        htmlFor="booking-modal"
+                        className="btn btn-primary text-white"
+                        disabled={slots.length === 0}
+                    >Book Appointment</label>
                 </div>
             </div>
         </div>

@@ -14,9 +14,6 @@ const AppointmentAvailable = ({ selectedDate }) => {
 
     }, [])
 
-
-
-
     return (
         <section className='my-28'>
             <h2 className='text-xl text-primary font-medium text-center mt-5 mb-10'>Available Appointments on {format(selectedDate, 'PP')}</h2>
@@ -32,7 +29,11 @@ const AppointmentAvailable = ({ selectedDate }) => {
             }
             </div>
             {service &&
-                <AppModal service={service}></AppModal>
+                <AppModal
+                    service={service}
+                    selectedDate={selectedDate}
+                    setService={setService}
+                ></AppModal>
             }
         </section>
     );

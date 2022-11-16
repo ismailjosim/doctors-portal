@@ -20,7 +20,7 @@ const Contact = () => {
                         <input id="name" type="text" placeholder="Subject" className="w-full p-3 rounded" />
                     </div>
                     <div>
-                        <textarea id="message" rows="5" className="w-full p-3 rounded" placeholder='Your Message' spellcheck="false"></textarea>
+                        <textarea id="message" rows="5" className="w-full p-3 rounded" placeholder='Your Message' spellCheck="false"></textarea>
                     </div>
                     <div className='text-center'>
                         <button type="submit" className="btn btn-primary text-white px-6">submit</button>

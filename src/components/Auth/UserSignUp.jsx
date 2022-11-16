@@ -15,9 +15,17 @@ const UserSignUp = () => {
     const onSubmit = data => {
         UserRegister(data.email, data.password)
             .then(result => {
+
                 const user = result.user;
                 console.log(user);
-                // updateUserInfo()
+
+                const profile = {
+                    displayName: data.name,
+                }
+                console.log(profile);
+                updateUserInfo(profile)
+                    .then(() => { })
+                    .catch(error => console.log(error.message))
             })
             .catch(error => {
                 console.log(error.message);

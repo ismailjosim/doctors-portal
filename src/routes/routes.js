@@ -8,6 +8,8 @@ import UserLogin from '../components/Auth/UserLogin';
 import UserSignUp from '../components/Auth/UserSignUp';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import { createBrowserRouter } from 'react-router-dom';
+import Dashboard from '../components/Dashboard/Dashboard';
+import Private from './Private';
 
 
 const routes = createBrowserRouter([
@@ -45,6 +47,10 @@ const routes = createBrowserRouter([
                 element: <UserSignUp />
             }
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <Private><Dashboard /></Private>
     }
 ])
 

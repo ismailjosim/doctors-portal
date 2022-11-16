@@ -8,31 +8,35 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
 
     // create user with email and password function
     const userLogin = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     // create new using with email and password
     const UserRegister = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
     // Update Newly Created User Info
-    const updateUserInfo = () => {
-        return updateProfile(user)
+    const updateUserInfo = profile => {
+        return updateProfile(auth.currentUser, profile)
     }
     // user logout functionality
     const userLogout = () => {
+        setLoading(true);
         return signOut(auth)
     }
 
     // observe user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser)
+            setUser(currentUser);
+            setLoading(false);
         })
 
         return () => unsubscribe()
@@ -46,7 +50,8 @@ const AuthProvider = ({ children }) => {
         updateUserInfo,
         userLogin,
         user,
-        userLogout
+        userLogout,
+        loading
 
     }
     return (

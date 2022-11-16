@@ -55,7 +55,8 @@ const AppModal = ({ service, selectedDate, setService }) => {
                             <input name="email" type="email" placeholder='Email' className="w-full p-3 rounded-md border input-primary" />
                         </div>
                         <div className="modal-action">
-                            <button type="submit" htmlFor="booking-modal" className="btn btn-primary text-white w-full">Submit</button>
+                            <label htmlFor="booking-modal" className="btn btn-error text-white">Cancel</label>
+                            <button type="submit" htmlFor="booking-modal" className="btn btn-primary text-white">Submit</button>
                         </div>
                     </form>
 

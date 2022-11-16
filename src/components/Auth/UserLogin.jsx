@@ -1,24 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const UserLogin = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { userLogin } = useContext(AuthContext)
+    const { userLogin } = useContext(AuthContext);
+    const [loginError, setLoginError] = useState('');
 
     // TODO: User Login Function
     const onSubmit = data => {
+        setLoginError('')
         userLogin(data.email, data.password)
             .then(result => {
-                console.log(result);
+                const user = result.user;
+                console.log(user);
             })
             .catch(error => {
                 console.log(error.message);
+                setLoginError(error.message)
             })
     }
-
-
 
 
 
@@ -45,12 +47,9 @@ const UserLogin = () => {
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input {...register("password", {
-                        required: 'Invalid Password',
-                        minLength: { value: 6, message: "Password Must Be 6 Characters Or longer." }
-
-                    })} type="password" className="input input-bordered w-full input-primary" />
+                    <input {...register("password")} type="password" className="input input-bordered w-full input-primary" />
                     {errors.password && <p className='text-error font-medium mt-1'>{errors.password?.message}</p>}
+                    {loginError && <p className='text-error text-base my-2'>{loginError}</p>}
 
                     {/* TODO: forget Password */}
                     <span className="label-text-alt text-end mt-1 text-sm capitalize hover:text-primary cursor-pointer">forget Password?</span>
@@ -60,6 +59,8 @@ const UserLogin = () => {
                 <div className="form-control w-full mt-5">
                     <button type="submit" className="btn btn-secondary text-white w-full font-normal">log in</button>
                 </div>
+
+                {/* TODO : show user login error */}
 
                 {/* TODO: Form submit button */}
                 <div className='mt-3 mb-5 text-center text-sm'>

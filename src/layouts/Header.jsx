@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 
 const Header = () => {
-    const { user, userLogout, handleUserRemove } = useContext(AuthContext);
+    const { user, userLogout } = useContext(AuthContext);
+
+    const handleUserLogout = () => {
+        userLogout().then(result => { }).catch(error => console.log(error.message))
+    }
+
 
 
     const menuItems = <>
@@ -12,9 +17,20 @@ const Header = () => {
         <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/appointment'>Appointment</Link></li>
         <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/reviews'>Reviews</Link></li>
         <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/contact'>Contact Us</Link></li>
-        <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/login'>Login</Link></li>
 
+
+
+        {user?.uid ?
+            <>
+                <li><h3>{user.email}</h3></li>
+                <li><button onClick={handleUserLogout} className='hover:btn-secondary btn-primary text-white rounded-md'>Logout</button></li>
+            </>
+            :
+            <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/login'>Login</Link></li>
+        }
     </>
+
+
 
 
     return (

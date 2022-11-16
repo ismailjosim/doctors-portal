@@ -8,15 +8,16 @@ const UserSignUp = () => {
     const { UserRegister, updateUserInfo } = useContext(AuthContext)
 
     const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])");
-    // /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/ same as upper value
+
 
 
     // TODO: User Login Function
     const onSubmit = data => {
         UserRegister(data.email, data.password)
             .then(result => {
-                updateUserInfo()
-
+                const user = result.user;
+                console.log(user);
+                // updateUserInfo()
             })
             .catch(error => {
                 console.log(error.message);

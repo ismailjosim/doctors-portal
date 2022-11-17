@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const UserSignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { UserRegister, updateUserInfo } = useContext(AuthContext)
+    const { UserRegister, updateUserInfo } = useContext(AuthContext);
+
+    const navigate = useNavigate()
 
     const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])");
 
@@ -24,7 +26,10 @@ const UserSignUp = () => {
                 }
                 console.log(profile);
                 updateUserInfo(profile)
-                    .then(() => { })
+                    .then(() => {
+                        navigate('/');
+
+                    })
                     .catch(error => console.log(error.message))
             })
             .catch(error => {

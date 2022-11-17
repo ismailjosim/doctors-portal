@@ -1,9 +1,16 @@
 import { format } from 'date-fns';
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const AppModal = ({ service, selectedDate, setService }) => {
-    const { name, slots } = service;
+    const { user } = useContext(AuthContext)
+    const { name: treatmentName, slots } = service;
     const date = format(selectedDate, 'PP')
+
+
+
+
 
     const handleModal = event => {
         event.preventDefault();
@@ -14,16 +21,31 @@ const AppModal = ({ service, selectedDate, setService }) => {
         const email = form.email.value;
         const booking = {
             appointmentDate: date,
-            treatmentName: name,
-            patentName: name,
+            treatmentName: treatmentName,
+            patientName: name,
             slot,
             email,
             phone
         }
-        // TODO: send data to the server. and once data is saved then close the modal and display success toast.
-        console.log(booking);
-        setService(null)
+        fetch('http://localhost:5000/bookings', {
+            method: "post",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                const booking = data.bookings;
+                if (booking.acknowledged) {
+                    toast.success('Booking Confirmed 🎉', { autoClose: 500 })
+                    setService(null)
+                }
+            })
+            .catch(error => console.log(error))
     }
+
+
 
     return (
         <div>
@@ -31,12 +53,18 @@ const AppModal = ({ service, selectedDate, setService }) => {
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <div className='mb-8'>
-                        <h3 className="font-bold text-lg">{name}</h3>
+                        <h3 className="font-bold text-lg">{treatmentName}</h3>
                     </div>
 
                     <form onSubmit={handleModal} className="space-y-6 ng-untouched ng-pristine ng-valid">
                         <div>
                             <input id="name" type="text" disabled defaultValue={date} className="w-full p-3 rounded-md border" />
+                        </div>
+                        <div>
+                            <input name="email" type="email" disabled defaultValue={user?.email} placeholder='Email' className="w-full p-3 rounded-md border input-primary" />
+                        </div>
+                        <div>
+                            <input required name="fullName" type="text" disabled defaultValue={user?.displayName} placeholder="Full Name" className="w-full p-3 rounded-md border input-primary" />
                         </div>
                         <div>
                             <select name="slot" className="select select-accent w-full p-3 rounded-md border">
@@ -46,13 +74,7 @@ const AppModal = ({ service, selectedDate, setService }) => {
                             </select>
                         </div>
                         <div>
-                            <input required name="fullName" type="text" placeholder="Full Name" className="w-full p-3 rounded-md border input-primary" />
-                        </div>
-                        <div>
                             <input required name="phone" type="text" placeholder='Phone Number' className="w-full p-3 rounded-md border input-primary" />
-                        </div>
-                        <div>
-                            <input name="email" type="email" placeholder='Email' className="w-full p-3 rounded-md border input-primary" />
                         </div>
                         <div className="modal-action">
                             <label htmlFor="booking-modal" className="btn btn-error text-white">Cancel</label>

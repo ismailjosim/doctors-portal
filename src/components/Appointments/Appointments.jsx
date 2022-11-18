@@ -11,6 +11,7 @@ const Appointments = () => {
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
             />
+
             <AppointmentAvailable
                 selectedDate={selectedDate}
             />

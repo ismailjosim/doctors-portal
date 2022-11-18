@@ -1,14 +1,14 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
-const AppModal = ({ service, selectedDate, setService }) => {
+const AppModal = ({ service, selectedDate, setService, refetch }) => {
     const { user } = useContext(AuthContext)
     const { name: treatmentName, slots } = service;
     const date = format(selectedDate, 'PP')
-
-
+    const location = useLocation();
 
 
 
@@ -38,8 +38,13 @@ const AppModal = ({ service, selectedDate, setService }) => {
             .then(data => {
                 const booking = data.bookings;
                 if (booking.acknowledged) {
-                    toast.success('Booking Confirmed 🎉', { autoClose: 500 })
-                    setService(null)
+                    toast.success('Booking Confirmed 🎉', { autoClose: 1000 })
+                    refetch();
+                    setService(null);
+                } else {
+                    toast.error(data.bookings, { autoClose: 1000 })
+                    setService(null);
+
                 }
             })
             .catch(error => console.log(error))
@@ -77,8 +82,14 @@ const AppModal = ({ service, selectedDate, setService }) => {
                             <input required name="phone" type="text" placeholder='Phone Number' className="w-full p-3 rounded-md border input-primary" />
                         </div>
                         <div className="modal-action">
-                            <label htmlFor="booking-modal" className="btn btn-error text-white">Cancel</label>
-                            <button type="submit" htmlFor="booking-modal" className="btn btn-primary text-white">Submit</button>
+                            {user ?
+                                <>
+                                    <label htmlFor="booking-modal" className="btn btn-error text-white">Cancel</label>
+                                    <button type="submit" htmlFor="booking-modal" className="btn btn-primary text-white">Submit</button>
+                                </> :
+                                <Link to='/login' state={{ from: location }} replace className="btn btn-error text-white">Please Login For Book Appointment</Link>
+
+                            }
                         </div>
                     </form>
 

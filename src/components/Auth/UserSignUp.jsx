@@ -18,16 +18,15 @@ const UserSignUp = () => {
         UserRegister(data.email, data.password)
             .then(result => {
 
+                // user profile
                 const user = result.user;
-                console.log(user);
-
                 const profile = {
                     displayName: data.name,
                 }
-                console.log(profile);
+
                 updateUserInfo(profile)
                     .then(() => {
-                        navigate('/');
+                        saveUserInfo(user.displayName, user.email);
 
                     })
                     .catch(error => console.log(error.message))
@@ -36,6 +35,28 @@ const UserSignUp = () => {
                 console.log(error.message);
             })
     }
+
+
+    // todo : save user info to database function
+    const saveUserInfo = (name, email) => {
+        const user = { name, email }
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.users);
+                navigate('/');
+            })
+    }
+
+
+
+
 
     return (
         <div className='max-w-sm mx-auto my-28  p-5 rounded-lg shadow-md border border-primary'>

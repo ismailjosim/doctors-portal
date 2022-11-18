@@ -8,8 +8,9 @@ import UserLogin from '../components/Auth/UserLogin';
 import UserSignUp from '../components/Auth/UserSignUp';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import { createBrowserRouter } from 'react-router-dom';
-import Dashboard from '../components/Dashboard/Dashboard';
 import Private from './Private';
+import DashboardLayout from '../layouts/DashboardLayout';
+import MyAppointment from '../components/My Appointment/MyAppointment';
 
 
 const routes = createBrowserRouter([
@@ -50,7 +51,13 @@ const routes = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Private><Dashboard /></Private>
+        element: <Private><DashboardLayout /></Private>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <MyAppointment />
+            }
+        ]
     }
 ])
 

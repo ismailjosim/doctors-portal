@@ -74,20 +74,6 @@ const UserSignUp = () => {
     }
 
 
-    // todo 3: get token for user
-    // const getUserToken = email => {
-    //     fetch(`http://localhost:5000/jwt?email=${ email }`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.token) {
-    //                 localStorage.setItem('userAccessToken', data.token)
-    //                 navigate('/');
-    //             }
-
-    //         })
-    // }
-
-
     return (
         <div className='max-w-sm mx-auto my-28  p-5 rounded-lg shadow-md border border-primary'>
             <h3 className='text-center font-normal text-2xl mb-8'>Login Here</h3>

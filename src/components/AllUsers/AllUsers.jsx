@@ -1,10 +1,11 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 
 const AllUsers = () => {
 
 
-    const { data: users = [] } = useQuery({
+    const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/users')
@@ -14,18 +15,21 @@ const AllUsers = () => {
     })
 
 
-
-    // const { data: appOptions = [], refetch, isLoading } = useQuery({
-    //     queryKey: ['appOptions', date],
-    //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:5000/appOptions?date=${ date }`);
-    //         const data = await res.json();
-    //         return data.options;
-    //     }
-    // })
-
-
-
+    const handleMakeAdmin = id => {
+        fetch(`http://localhost:5000/users/admin/${ id }`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${ localStorage.getItem('userAccessToken') }`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.admin.modifiedCount > 0) {
+                    toast.success('Admin Make Successfully', { autoClose: 1000 })
+                    refetch()
+                }
+            })
+    }
 
 
 
@@ -55,8 +59,8 @@ const AllUsers = () => {
                                         <th>{idx + 1}</th>
                                         <td>{user.name}</td>
                                         <td>{user.email}</td>
-                                        <td>Blue</td>
-                                        <td>Blue</td>
+                                        <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary text-white'>Make Admin</button>}</td>
+                                        <td><button className='btn btn-xs btn-error'>Delete</button></td>
                                     </tr>
                                 )
                             })

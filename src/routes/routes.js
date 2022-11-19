@@ -14,6 +14,7 @@ import MyAppointment from '../components/My Appointment/MyAppointment';
 import AllUsers from '../components/AllUsers/AllUsers';
 import AdminRoute from './AdminRoute';
 import AddDoctor from '../components/AddDoctor/AddDoctor';
+import ManageDoctors from '../components/ManageDoctors/ManageDoctors';
 
 
 const routes = createBrowserRouter([
@@ -67,6 +68,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/addadoctor',
                 element: <AdminRoute><AddDoctor /></AdminRoute>
+            },
+            {
+                path: '/dashboard/managedoctors',
+                element: <AdminRoute><ManageDoctors /></AdminRoute>
             }
         ]
     }

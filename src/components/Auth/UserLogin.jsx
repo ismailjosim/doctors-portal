@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const UserLogin = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -9,9 +10,25 @@ const UserLogin = () => {
     const [loginError, setLoginError] = useState('');
 
 
+    // todo: navigate user when login
     const navigate = useNavigate()
     const location = useLocation()
     const from = location?.state?.from.pathname || '/';
+
+
+
+    // todo: set user email for jwt verification
+    const [loginUserEmail, setLoginUserEmail] = useState('')
+    const [token] = useToken(loginUserEmail);
+
+
+    // footer: navigate when we get token
+    if (token) {
+        navigate(from, { replace: true })
+    }
+
+
+
 
 
     // TODO: User Login Function
@@ -20,8 +37,8 @@ const UserLogin = () => {
         userLogin(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                navigate(from, { replace: true })
+                setLoginUserEmail(user.email)
+
             })
             .catch(error => {
                 console.log(error.message);

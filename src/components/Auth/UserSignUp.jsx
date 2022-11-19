@@ -1,20 +1,38 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
+
+
+
 
 const UserSignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { UserRegister, updateUserInfo } = useContext(AuthContext);
 
+    const [newUserEmail, setNewUserEmail] = useState('')
+    const [token] = useToken(newUserEmail);
     const navigate = useNavigate()
+
+
+    if (token) {
+        navigate('/');
+    }
+
+
 
     const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])");
 
 
 
+
+
+
+
     // TODO: User Login Function
     const onSubmit = data => {
+        // 1. Create New User
         UserRegister(data.email, data.password)
             .then(result => {
 
@@ -23,9 +41,10 @@ const UserSignUp = () => {
                 const profile = {
                     displayName: data.name,
                 }
-
+                // 2. Update New User
                 updateUserInfo(profile)
                     .then(() => {
+                        // 3. save user email & pass to database
                         saveUserInfo(user.displayName, user.email);
 
                     })
@@ -37,7 +56,7 @@ const UserSignUp = () => {
     }
 
 
-    // todo : save user info to database function
+    // todo 3 : save user info to database function
     const saveUserInfo = (name, email) => {
         const user = { name, email }
         fetch('http://localhost:5000/users', {
@@ -49,13 +68,24 @@ const UserSignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data.users);
-                navigate('/');
+                setNewUserEmail(email);
+
             })
     }
 
 
+    // todo 3: get token for user
+    // const getUserToken = email => {
+    //     fetch(`http://localhost:5000/jwt?email=${ email }`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.token) {
+    //                 localStorage.setItem('userAccessToken', data.token)
+    //                 navigate('/');
+    //             }
 
+    //         })
+    // }
 
 
     return (

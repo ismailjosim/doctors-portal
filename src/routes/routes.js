@@ -11,6 +11,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Private from './Private';
 import DashboardLayout from '../layouts/DashboardLayout';
 import MyAppointment from '../components/My Appointment/MyAppointment';
+import AllUsers from '../components/AllUsers/AllUsers';
 
 
 const routes = createBrowserRouter([
@@ -56,6 +57,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyAppointment />
+            },
+            {
+                path: '/dashboard/users',
+                element: <AllUsers />
             }
         ]
     }

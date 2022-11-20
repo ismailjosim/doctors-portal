@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../Shared/Loading';
+import { toast } from 'react-toastify';
+import ConfirmationModal from '../Shared/ConfirmationModal';
+
 
 const ManageDoctors = () => {
-    const { data: doctors = [], isLoading } = useQuery({
+    const [deletingDoctor, setDeletingDoctor] = useState(null)
+
+
+
+    const closeModal = () => {
+        setDeletingDoctor(null)
+    }
+
+
+
+    const { data: doctors = [], isLoading, refetch } = useQuery({
         queryKey: ['doctors'],
         queryFn: async () => {
             try {
@@ -21,11 +34,37 @@ const ManageDoctors = () => {
         }
     })
 
-
-
     if (isLoading) {
         return <Loading></Loading>
     }
+
+
+    const handleDeleteDoctor = doctor => {
+        // console.log('inside manage doctor', doctor);
+
+        fetch(`http://localhost:5000/doctors/${ doctor._id }`, {
+            method: "DELETE",
+            headers: {
+                authorization: `bearer ${ localStorage.getItem('userAccessToken') }`
+            }
+        })
+            .then(res => res.json())
+
+            .then(data => {
+
+                const doctor = data.doctor;
+                if (doctor.deletedCount > 0) {
+                    toast.success("Doctor Removed!", { autoClose: 1000 })
+                    refetch()
+                }
+            })
+
+
+    }
+
+
+
+
 
     return (
         <div>
@@ -55,7 +94,7 @@ const ManageDoctors = () => {
                                         <th>{idx + 1}</th>
                                         <td>
                                             <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
+                                                <div className="w-14 mask rounded-lg ring ring-primary ring-offset-base-100 ring-offset-2">
                                                     <img src={doctor?.image} alt={doctor.name} />
                                                 </div>
                                             </div>
@@ -66,7 +105,7 @@ const ManageDoctors = () => {
                                             <button className="btn btn-ghost btn-xs text-green-600">active</button>
                                         </th>
                                         <td>
-                                            <button className="btn btn-error btn-xs text-white rounded-md">Delete</button>
+                                            <label htmlFor="confirmation-modal" onClick={() => setDeletingDoctor(doctor)} className="btn btn-error btn-xs text-white rounded-md">Delete</label>
                                         </td>
 
                                     </tr>
@@ -81,8 +120,21 @@ const ManageDoctors = () => {
 
                 </table>
             </div>
+            {
+                deletingDoctor &&
+                <ConfirmationModal
+                    title={`Are You Sure!`}
+                    message={`Please Check Before Confirmation`}
+                    successAction={handleDeleteDoctor}
+                    deletingDoctor={deletingDoctor}
+                    closeModal={closeModal}
+                >
 
-        </div>
+
+                </ConfirmationModal>
+            }
+
+        </div >
     );
 };
 

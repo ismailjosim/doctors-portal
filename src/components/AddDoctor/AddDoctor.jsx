@@ -62,7 +62,7 @@ const AddDoctor = () => {
                     })
                         .then(res => res.json())
                         .then(result => {
-                            console.log(result.doctors);
+                            // console.log(result.doctors);
                             toast.success('New Doctor Added Successfully 🎉', { autoClose: 1000 })
                             navigate('/dashboard/managedoctors')
                         })

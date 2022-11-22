@@ -24,7 +24,7 @@ const PaymentCheckout = ({ booking }) => {
 
     // Header :  Create PaymentIntent as soon as the page loads
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://doctor-portal-server-tawny.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -91,7 +91,7 @@ const PaymentCheckout = ({ booking }) => {
             }
 
             // LINK: Store Payment Info to database
-            fetch("http://localhost:5000/payments", {
+            fetch("https://doctor-portal-server-tawny.vercel.app/payments", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

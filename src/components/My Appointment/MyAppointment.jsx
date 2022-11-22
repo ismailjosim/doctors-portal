@@ -7,7 +7,7 @@ const MyAppointment = () => {
     const { user } = useContext(AuthContext);
 
 
-    const url = `http://localhost:5000/bookings?email=${ user.email }`; // error: need to add ? here
+    const url = `https://doctor-portal-server-tawny.vercel.app/bookings?email=${ user.email }`; // error: need to add ? here
 
     const { data = [] } = useQuery({
         queryKey: ['bookings', user?.email],

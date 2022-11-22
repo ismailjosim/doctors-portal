@@ -59,7 +59,7 @@ const UserSignUp = () => {
     // todo 3 : save user info to database function
     const saveUserInfo = (name, email) => {
         const user = { name, email }
-        fetch('http://localhost:5000/users', {
+        fetch('https://doctor-portal-server-tawny.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

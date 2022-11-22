@@ -9,13 +9,13 @@ const Header = () => {
         userLogout().then(result => { }).catch(error => console.log(error.message))
     }
 
+    // <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/about'>About</Link></li>
+    // <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/reviews'>Reviews</Link></li>
 
 
     const menuItems = <>
         <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/'>Home</Link></li>
-        <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/about'>About</Link></li>
         <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/appointment'>Appointment</Link></li>
-        <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/reviews'>Reviews</Link></li>
         <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/contact'>Contact Us</Link></li>
         {user?.uid ?
             <>

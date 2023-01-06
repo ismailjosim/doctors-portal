@@ -75,7 +75,7 @@ const Pricing = () => {
             </div>
             <div className="grid lg:grid-cols-2 lg:gap-20 gap-10">
                 {pricePackages.map((data, id) => {
-                    return <div key={id} className="shadow-lg p-5 rounded-lg border-t-4 border-primary bg-white">
+                    return <div key={id} className="shadow-lg hover:shadow-sm transition-all duration-500 p-5 rounded-lg border-t-4 border-primary bg-white">
                         <img src={data.picture} alt="" />
                         <p className="mt-4 text-3xl text-gray-700 font-medium">{data.name}</p>
                         <div className="mr-10 my-5">

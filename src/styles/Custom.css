@@ -22,7 +22,9 @@
 
 
 
-
-/* img:hover {
-    transform: scale(1.05);
-} */
+.bg-app-custom {
+    background-image: url(../assets/images/appointment.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

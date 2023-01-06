@@ -1,5 +1,6 @@
 import React from 'react';
 import Contact from '../Contact Us/Contact';
+import AppDownload from './AppDownload';
 import CallToAction from './CallToAction';
 import Featured from './Featured';
 import Gallery from './Gallery';
@@ -22,6 +23,7 @@ const Home = () => {
             <Featured />
             <HomeAppointment />
             <Gallery />
+            <AppDownload />
             <Testimonials />
             <Contact />
         </section>

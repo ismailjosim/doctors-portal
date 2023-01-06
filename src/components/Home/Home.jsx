@@ -6,6 +6,7 @@ import Gallery from './Gallery';
 import Hero from './Hero';
 import HomeAppointment from './HomeAppointment';
 import HomeServices from './HomeServices';
+import Solutions from './Solutions';
 import Testimonials from './Testimonials';
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
             <Hero />
             <CallToAction />
             <HomeServices />
+            <Solutions />
             <Featured />
             <HomeAppointment />
             <Gallery />

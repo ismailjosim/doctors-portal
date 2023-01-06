@@ -2,6 +2,7 @@ import React from 'react';
 import Contact from '../Contact Us/Contact';
 import AppDownload from './AppDownload';
 import CallToAction from './CallToAction';
+import FAQs from './FAQs';
 import Featured from './Featured';
 import Gallery from './Gallery';
 import Hero from './Hero';
@@ -25,6 +26,7 @@ const Home = () => {
             <Gallery />
             <AppDownload />
             <Testimonials />
+            <FAQs />
             <Contact />
         </section>
     );

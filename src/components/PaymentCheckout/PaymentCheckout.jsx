@@ -13,7 +13,7 @@ const PaymentCheckout = ({ booking }) => {
 
     const [cardError, setCardError] = useState('');
     const [processing, setProcessing] = useState(false);
-    const [transactionId, setTransactionId] = useState('');
+    const [setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState("");
     const stripe = useStripe();
     const elements = useElements();
@@ -51,7 +51,7 @@ const PaymentCheckout = ({ booking }) => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         })

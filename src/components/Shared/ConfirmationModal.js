@@ -13,7 +13,7 @@ const ConfirmationModal = ({ title, message, deletingDoctor, closeModal, success
                     <div className='flex justify-center my-5 gap-5 items-center'>
                         <div className="avatar my-2">
                             <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src={deletingDoctor.image} />
+                                <img src={deletingDoctor.image} alt={title} />
                             </div>
                         </div>
 

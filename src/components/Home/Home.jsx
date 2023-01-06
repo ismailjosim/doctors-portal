@@ -8,6 +8,7 @@ import Gallery from './Gallery';
 import Hero from './Hero';
 import HomeAppointment from './HomeAppointment';
 import HomeServices from './HomeServices';
+import Pricing from './Pricing';
 import Solutions from './Solutions';
 import Testimonials from './Testimonials';
 
@@ -27,6 +28,7 @@ const Home = () => {
             <AppDownload />
             <Testimonials />
             <FAQs />
+            <Pricing />
             <Contact />
         </section>
     );

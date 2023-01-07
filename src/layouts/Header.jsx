@@ -15,6 +15,7 @@ const Header = () => {
 
     const menuItems = <>
         <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/'>Home</Link></li>
+        <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/about'>About US</Link></li>
         <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/appointment'>Appointment</Link></li>
         <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/contact'>Contact Us</Link></li>
         {user?.uid ?

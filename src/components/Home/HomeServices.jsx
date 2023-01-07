@@ -3,6 +3,7 @@ import fluoride from '../../assets/images/fluoride.png'
 import cavity from '../../assets/images/cavity.png';
 import whitening from '../../assets/images/whitening.png';
 import ServiceCard from './ServiceCard';
+import SectionHeading from '../Shared/SectionHeading';
 const HomeServices = () => {
 
     const servicesData = [
@@ -25,13 +26,14 @@ const HomeServices = () => {
             description: 'Tooth whitening or tooth bleaching is the process of lightening the color of human teeth.'
         }
     ]
+    const heading = {
+        primary: "OUR SERVICES",
+        secondary: "Services We Provide"
+    }
 
     return (
         <div className='mb-24 w-11/12 mx-auto'>
-            <div className='text-center mb-16'>
-                <h4 className='text-accent font-bold text-xl'>OUR SERVICES</h4>
-                <h2 className='text-secondary font-normal text-3xl'>Services We Provide</h2>
-            </div>
+            <SectionHeading heading={heading}></SectionHeading>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8'>
                 {
                     servicesData.map(service => <ServiceCard key={service.id} service={service}></ServiceCard>)

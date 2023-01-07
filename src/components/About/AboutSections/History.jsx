@@ -8,7 +8,7 @@ const History = () => {
         primary: "New smiles", secondary: "Welcome to Doctor Portal"
     }
     return (
-        <div>
+        <div className='my-10 w-11/12 mx-auto'>
             <SectionHeading heading={heading}></SectionHeading>
             <div className='flex flex-col-reverse lg:flex-row md:flex-row gap-10 md:gap-5 lg:gap-20'>
                 <div className='w-full lg:w-1/2 md:w-1/2'>

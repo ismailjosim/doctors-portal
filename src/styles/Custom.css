@@ -39,3 +39,10 @@
 .slick-arrow {
     display: none !important;
 }
+
+.cta_bg {
+    background-image: url(../assets/images/bg-2.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

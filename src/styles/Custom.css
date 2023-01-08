@@ -46,3 +46,10 @@
     background-position: center center;
     background-size: cover;
 }
+
+.team_section_banner {
+    background-image: url(../assets/images/bg-1.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

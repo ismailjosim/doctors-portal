@@ -9,6 +9,7 @@ import img06 from '../../assets/team/image-18-800x800.jpg';
 import img07 from '../../assets/team/image-19-800x800.jpg';
 import img08 from '../../assets/team/image-20-800x800.jpg';
 import PageHeader from '../About/AboutSections/PageHeader';
+import Emergency from './../About/AboutSections/Emergency';
 const TeamPage = () => {
 
     const teamDetails = [
@@ -111,6 +112,7 @@ const TeamPage = () => {
                     }
                 </div>
             </div>
+            <Emergency />
         </div>
     );
 };

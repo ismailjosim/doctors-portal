@@ -13,6 +13,7 @@ const About = () => {
             <Advantages />
             <CTA />
             <Team />
+
         </div>
     );
 };

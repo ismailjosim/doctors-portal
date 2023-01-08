@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
+import logo from '../assets/images/logo.png'
 
 const Header = () => {
     const { user, userLogout } = useContext(AuthContext);
@@ -8,9 +9,6 @@ const Header = () => {
     const handleUserLogout = () => {
         userLogout().then(result => { }).catch(error => console.log(error.message))
     }
-
-    // <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/about'>About</Link></li>
-    // <li><Link className='hover:btn-secondary rounded-md hover:text-white' to='/reviews'>Reviews</Link></li>
 
 
     const menuItems = <>
@@ -32,7 +30,7 @@ const Header = () => {
 
 
     return (
-        <header>
+        <header className='border-b-2'>
             <div className="navbar font-semibold lg:w-11/12 mx-auto">
                 <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -40,7 +38,9 @@ const Header = () => {
                     </svg>
                 </label>
                 <div className="navbar-start">
-                    <Link className='text-2xl' to='/'>DR. Portal</Link>
+                    <Link to='/'>
+                        <img className='w-10' src={logo} alt="" />
+                    </Link>
                 </div>
                 <div className="navbar-end">
                     <div className="navbar-center hidden lg:flex">

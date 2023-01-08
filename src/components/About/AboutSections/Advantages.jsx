@@ -1,6 +1,9 @@
 import React from 'react';
 import SectionHeading from '../../Shared/SectionHeading';
 import { TiTick } from "react-icons/ti";
+import Slider from "react-slick";
+
+
 const Advantages = () => {
     const heading = {
         primary: "ADVANTAGES", secondary: "Why Choose Us?"
@@ -14,11 +17,41 @@ const Advantages = () => {
         "Flexible Payment Options"
     ]
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
     return (
         <div className='bg-slate-200 py-20'>
             <SectionHeading heading={heading} ></SectionHeading>
             <div className='flex lg:flex-row flex-col gap-10 md:gap-5 lg:gap-20 w-11/12 mx-auto'>
-                <div className='w-full lg:w-1/2 md:w-1/2'>slider</div>
+                <div className='w-full lg:w-1/2 md:w-1/2'>
+                    <Slider {...settings}>
+                        <div>
+                            <h3>1</h3>
+                        </div>
+                        <div>
+                            <h3>2</h3>
+                        </div>
+                        <div>
+                            <h3>3</h3>
+                        </div>
+                        <div>
+                            <h3>4</h3>
+                        </div>
+                        <div>
+                            <h3>5</h3>
+                        </div>
+                        <div>
+                            <h3>6</h3>
+                        </div>
+                    </Slider>
+
+                </div>
                 <div className='w-full lg:w-1/2 md:w-1/2'>
                     <p className='w-9/12'>Our dental clinic is a modern and comfortable facility, with a professional dental team who will take time to listen to your concerns, desired outcomes, and provide you with high quality dental care.
                     </p>

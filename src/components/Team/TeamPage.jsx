@@ -1,16 +1,16 @@
-import React from "react";
-import { Link } from 'react-router-dom';
-import { FaDiscord, FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
-import SectionHeading from './../../Shared/SectionHeading';
-import img01 from '../../../assets/team/image-13-800x800.jpg';
-import img02 from '../../../assets/team/image-14-800x800.jpg';
-import img03 from '../../../assets/team/image-15-800x800.jpg';
+import React from 'react';
+import { FaFacebookF, FaTwitter, FaInstagram, FaDiscord } from 'react-icons/fa';
+import img01 from '../../assets/team/image-13-800x800.jpg';
+import img02 from '../../assets/team/image-14-800x800.jpg';
+import img03 from '../../assets/team/image-15-800x800.jpg';
+import img04 from '../../assets/team/image-16-800x800.jpg';
+import img05 from '../../assets/team/image-17-800x800.jpg';
+import img06 from '../../assets/team/image-18-800x800.jpg';
+import img07 from '../../assets/team/image-19-800x800.jpg';
+import img08 from '../../assets/team/image-20-800x800.jpg';
+import PageHeader from '../About/AboutSections/PageHeader';
+const TeamPage = () => {
 
-const Team = () => {
-
-    const heading = {
-        primary: "our staff", secondary: "Meet the Doctors"
-    }
     const teamDetails = [
         {
             name: "Stewart Wheal",
@@ -32,13 +32,49 @@ const Team = () => {
             email: "dr.nutter@clinic.com",
             img: img03,
             details: 'Great specialist in promoting oral health and disease prevention.'
+        },
+        {
+            name: "Emily Silver",
+            post: "Oral Health Therapist",
+            email: "dr.silver@clinic.com",
+            img: img04,
+            details: 'Great specialist in promoting oral health and disease prevention.'
+        },
+        {
+            name: "Elizabeth Welsh",
+            post: "Dentist",
+            email: "dr.waterford@clinic.com",
+            img: img05,
+            details: 'Great specialist in promoting oral health and disease prevention.'
+        },
+        {
+            name: "Brandon Fuller",
+            post: "Hygienist",
+            email: "dr.fuller@clinic.com",
+            img: img06,
+            details: 'Great specialist in promoting oral health and disease prevention.'
+        },
+        {
+            name: "Andrea Hayes",
+            post: "Orthodontist",
+            email: "dr.hayes@clinic.com",
+            img: img07,
+            details: 'Great specialist in promoting oral health and disease prevention.'
+        },
+        {
+            name: "Alex Turner",
+            post: "Clinical Director",
+            email: "dr.turner@clinic.com",
+            img: img08,
+            details: 'Has an exceptional organizational and leadership skills.'
         }
     ]
 
+
     return (
-        <div>
-            <div className="w-11/12 mx-auto mt-10">
-                <SectionHeading heading={heading} />
+        <div className=''>
+            <PageHeader title="Our team"></PageHeader>
+            <div className="w-11/12 mx-auto mt-20">
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
                     {teamDetails.map((data, id) => {
                         const { name, post, email, img, details } = data;
@@ -74,12 +110,9 @@ const Team = () => {
                     })
                     }
                 </div>
-                <div className='w-full mx-auto text-center'>
-                    <Link to='/team' className='btn btn-primary text-white bg-gradient-to-r from-primary to-accent'>View All</Link>
-                </div>
             </div>
         </div>
     );
-}
-export default Team;
+};
 
+export default TeamPage;

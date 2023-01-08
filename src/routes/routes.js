@@ -16,6 +16,7 @@ import AdminRoute from './AdminRoute';
 import AddDoctor from '../components/AddDoctor/AddDoctor';
 import ManageDoctors from '../components/ManageDoctors/ManageDoctors';
 import Payment from '../components/Payment/Payment';
+import TeamPage from '../components/Team/TeamPage';
 
 
 const routes = createBrowserRouter([
@@ -39,6 +40,10 @@ const routes = createBrowserRouter([
             {
                 path: '/reviews',
                 element: <Reviews />
+            },
+            {
+                path: '/team',
+                element: <TeamPage />
             },
             {
                 path: '/contact',

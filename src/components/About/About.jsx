@@ -8,7 +8,7 @@ const About = () => {
 
     return (
         <div>
-            <PageHeader />
+            <PageHeader title="about us" />
             <History />
             <Advantages />
             <CTA />

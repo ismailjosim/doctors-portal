@@ -9,6 +9,7 @@ import img05 from '../../../assets/team/image-17-800x800.jpg';
 import img06 from '../../../assets/team/image-18-800x800.jpg';
 import img07 from '../../../assets/team/image-19-800x800.jpg';
 import img08 from '../../../assets/team/image-20-800x800.jpg';
+import { Link } from 'react-router-dom';
 
 const Team = () => {
 
@@ -112,6 +113,9 @@ const Team = () => {
                         </div>
                     })
                     }
+                </div>
+                <div className='w-full mx-auto text-center'>
+                    <Link to='/appointment' className='btn btn-primary text-white bg-gradient-to-r from-primary to-accent'>View All</Link>
                 </div>
             </div>
         </div>

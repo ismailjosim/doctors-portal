@@ -24,7 +24,7 @@ const ContactInfo = () => {
 
 
     return (
-        <div className="w-11/12 mx-auto grid lg:grid-cols-4 grid-cols-2 gap-5 justify-center items-center">
+        <div className="w-11/12 mx-auto grid lg:grid-cols-4 grid-cols-2 gap-5 justify-center items-center my-10">
             {
                 info.map((data, idx) => {
                     return <div key={idx} className='flex flex-col justify-center items-center gap-2'>

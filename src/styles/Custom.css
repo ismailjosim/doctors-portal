@@ -1,39 +1,42 @@
-.custom-bg {
-    background-image: url(../assets/images/bg.png);
+.custom-bg,
+.appointment-custom-bg,
+.contact-bg,
+.bg-footer-custom,
+.bg-app-custom,
+.section_banner,
+.contact_banner,
+.cta_bg,
+.team_section_banner {
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: contain;
+    background-size: cover;
 }
 
 .appointment-custom-bg,
 .contact-bg {
     background-image: url(../assets/images/appointment.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+}
+
+.custom-bg {
+    background-image: url(../assets/images/bg.png);
+
 }
 
 .bg-footer-custom {
     background-image: url(../assets/images/footer.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+
 }
-
-
 
 .bg-app-custom {
     background-image: url(../assets/images/appointment.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
 }
 
 .section_banner {
     background-image: url(../assets/images/section-bg.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+}
+
+.contact_banner {
+    background-image: url(../assets/images/contact-bg.jpg);
 }
 
 .slick-arrow {
@@ -42,14 +45,8 @@
 
 .cta_bg {
     background-image: url(../assets/images/bg-2.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
 }
 
 .team_section_banner {
     background-image: url(../assets/images/bg-1.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
 }

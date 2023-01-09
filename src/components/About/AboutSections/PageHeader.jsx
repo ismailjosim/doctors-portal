@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const PageHeader = ({ title }) => {
 
     return (
-        <div className="w-full section_banner">
+        <div className="w-full contact_banner">
             <div className="w-full flex flex-col items-center justify-between bg-black bg-opacity-40 py-10 lg:py-20">
                 <div className="flex-1 flex flex-col items-center justify-center">
                     <div className="text-white bg-opacity-10 px-4 py-2 rounded-xl flex items-center justify-center space-x-2 lg:space-x-4">

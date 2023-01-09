@@ -8,7 +8,7 @@ const Contact = () => {
 
     return (
         <div>
-            <PageHeader></PageHeader>
+            <PageHeader title="contact us" ></PageHeader>
         </div>
     );
 };

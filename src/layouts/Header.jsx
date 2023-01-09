@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
-import logo from '../assets/images/logo.png'
+import logo from '../assets/images/dental-final-logo.png';
 
 const Header = () => {
     const { user, userLogout } = useContext(AuthContext);
@@ -38,8 +38,8 @@ const Header = () => {
                     </svg>
                 </label>
                 <div className="navbar-start">
-                    <Link to='/'>
-                        <img className='w-10' src={logo} alt="" />
+                    <Link className='' to='/'>
+                        <img className='w-40' src={logo} alt="" />
                     </Link>
                 </div>
                 <div className="navbar-end">

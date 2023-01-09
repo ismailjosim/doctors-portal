@@ -39,7 +39,7 @@ const Header = () => {
                 </label>
                 <div className="navbar-start">
                     <Link className='' to='/'>
-                        <img className='w-40' src={logo} alt="" />
+                        <img className='w-48' src={logo} alt="" />
                     </Link>
                 </div>
                 <div className="navbar-end">

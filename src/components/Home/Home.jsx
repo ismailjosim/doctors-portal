@@ -1,5 +1,5 @@
 import React from 'react';
-import Contact from '../Contact Us/Contact';
+import ContactForm from '../Contact Us/ContactSections/ContactForm';
 import AppDownload from './AppDownload';
 import CallToAction from './CallToAction';
 import FAQs from './FAQs';
@@ -29,7 +29,7 @@ const Home = () => {
             <Testimonials />
             <FAQs />
             <Pricing />
-            <Contact />
+            <ContactForm />
         </section>
     );
 };

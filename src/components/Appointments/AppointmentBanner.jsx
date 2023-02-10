@@ -11,12 +11,12 @@ const AppointmentBanner = ({ selectedDate, setSelectedDate }) => {
                     <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:text-left">
                         <DayPicker
                             mode="single" // mode will be selected according to project.
-                            selected={selectedDate}
-                            onSelect={setSelectedDate}
+                            selected={ selectedDate }
+                            onSelect={ setSelectedDate }
                         />
                     </div>
                     <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-                        <img src={heroImg} alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
+                        <img src={ heroImg } alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
                     </div>
                 </div>
             </section>

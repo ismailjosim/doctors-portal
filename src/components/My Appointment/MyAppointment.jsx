@@ -2,9 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
-import { RxCross2 } from 'react-icons/rx'
-import { toast } from 'react-toastify';
-import Loading from './../Shared/Loading';
 
 const MyAppointment = () => {
     const { user } = useContext(AuthContext);
@@ -12,7 +9,7 @@ const MyAppointment = () => {
 
     const url = `https://doctor-portal-server-tawny.vercel.app/bookings?email=${ user.email }`; // error: need to add ? here
 
-    const { data = [], isLoading, refetch } = useQuery({
+    const { data = [] } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -26,32 +23,9 @@ const MyAppointment = () => {
         }
     })
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
 
 
     // console.log(data.bookings);
-    const handleRemoveAppointment = booking => {
-        console.log(booking);
-
-        fetch(`https://doctor-portal-server-tawny.vercel.app/bookings/${ booking._id }`, {
-            method: "DELETE",
-            headers: {
-                authorization: `bearer ${ localStorage.getItem('userAccessToken') }`
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                const booking = data.booking;
-                console.log(booking);
-                if (booking.deletedCount > 0) {
-                    toast.success("booking Removed!", { autoClose: 1000 })
-                    refetch();
-                }
-            })
-
-    }
 
 
 
@@ -67,11 +41,11 @@ const MyAppointment = () => {
 
                         <tr>
                             <th>Serial</th>
+                            <th>Name</th>
                             <th>Treatment Name</th>
                             <th>Date</th>
                             <th>time</th>
                             <th>Price</th>
-                            <th></th>
                         </tr>
 
                     </thead>
@@ -82,6 +56,7 @@ const MyAppointment = () => {
                                 return (
                                     <tr key={ idx }>
                                         <th>{ idx + 1 }</th>
+                                        <td>{ booking.patientName }</td>
                                         <td>{ booking.treatmentName }</td>
                                         <td>{ booking.appointmentDate }</td>
                                         <td>{ booking.slot }</td>
@@ -96,11 +71,6 @@ const MyAppointment = () => {
                                             }
 
                                         </td>
-                                        <td>
-                                            <button onClick={ () => handleRemoveAppointment(booking) } className='bg-error p-1 text-white rounded-full'>
-                                                <RxCross2 />
-                                            </button>
-                                        </td>
                                     </tr>
                                 )
                             })
@@ -109,9 +79,6 @@ const MyAppointment = () => {
                     </tbody>
                 </table>
             </div>
-            {
-
-            }
         </div>
     );
 };

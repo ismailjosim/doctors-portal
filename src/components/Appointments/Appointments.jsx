@@ -8,12 +8,12 @@ const Appointments = () => {
     return (
         <div>
             <AppointmentBanner
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                selectedDate={ selectedDate }
+                setSelectedDate={ setSelectedDate }
             />
 
             <AppointmentAvailable
-                selectedDate={selectedDate}
+                selectedDate={ selectedDate }
             />
         </div>
     );

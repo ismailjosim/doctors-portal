@@ -68,7 +68,7 @@ const ManageDoctors = () => {
 
     return (
         <div>
-            <h3>All doctors {doctors?.length}</h3>
+            <h3>All doctors { doctors?.length }</h3>
 
 
             <div className="overflow-x-auto w-full">
@@ -90,22 +90,22 @@ const ManageDoctors = () => {
                         {
                             doctors?.map((doctor, idx) => {
                                 return (
-                                    <tr key={doctor._id}>
-                                        <th>{idx + 1}</th>
+                                    <tr key={ doctor._id }>
+                                        <th>{ idx + 1 }</th>
                                         <td>
                                             <div className="avatar">
                                                 <div className="w-14 mask rounded-lg ring ring-primary ring-offset-base-100 ring-offset-2">
-                                                    <img src={doctor?.image} alt={doctor.name} />
+                                                    <img src={ doctor?.image } alt={ doctor.name } />
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className='font-semibold'>{doctor.name}</td>
-                                        <td>{doctor.specialty}</td>
+                                        <td className='font-semibold'>{ doctor.name }</td>
+                                        <td>{ doctor.specialty }</td>
                                         <th>
                                             <button className="btn btn-ghost btn-xs text-green-600">active</button>
                                         </th>
                                         <td>
-                                            <label htmlFor="confirmation-modal" onClick={() => setDeletingDoctor(doctor)} className="btn btn-error btn-xs text-white rounded-md">Delete</label>
+                                            <label htmlFor="confirmation-modal" onClick={ () => setDeletingDoctor(doctor) } className="btn btn-error btn-xs text-white rounded-md">Delete</label>
                                         </td>
 
                                     </tr>
@@ -123,18 +123,18 @@ const ManageDoctors = () => {
             {
                 deletingDoctor &&
                 <ConfirmationModal
-                    title={`Are You Sure!`}
-                    message={`Please Check Before Confirmation`}
-                    successAction={handleDeleteDoctor}
-                    deletingDoctor={deletingDoctor}
-                    closeModal={closeModal}
+                    title={ `Are You Sure!` }
+                    message={ `Please Check Before Confirmation` }
+                    successAction={ handleDeleteDoctor }
+                    deletingDoctor={ deletingDoctor }
+                    closeModal={ closeModal }
                 >
 
 
                 </ConfirmationModal>
             }
 
-        </div >
+        </div>
     );
 };
 

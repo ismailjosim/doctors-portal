@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -36,7 +37,7 @@ const PaymentCheckout = ({ booking }) => {
             .then((data) => setClientSecret(data.clientSecret));
     }, [price]);
 
-
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -108,6 +109,7 @@ const PaymentCheckout = ({ booking }) => {
                             'Your Payment Is Completed!',
                             'success'
                         )
+                        navigate('/dashboard')
                         setTransactionId(paymentIntent.id)
                     }
                 })
@@ -120,9 +122,9 @@ const PaymentCheckout = ({ booking }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={ handleSubmit }>
                 <CardElement className='m-5 border-2 border-accent p-3 rounded-full'
-                    options={{
+                    options={ {
                         style: {
                             base: {
                                 fontSize: '16px',
@@ -137,9 +139,9 @@ const PaymentCheckout = ({ booking }) => {
                                 color: '#F32B42',
                             },
                         },
-                    }}
+                    } }
                 />
-                <button className='btn btn-primary w-full md:w-auto lg:w-auto mt-10 text-white' type="submit" disabled={!stripe || !clientSecret || processing}>
+                <button className='btn btn-primary w-full md:w-auto lg:w-auto mt-10 text-white' type="submit" disabled={ !stripe || !clientSecret || processing }>
                     proceed Payment
                 </button>
             </form>
@@ -149,10 +151,10 @@ const PaymentCheckout = ({ booking }) => {
             {
                 cardError &&
                 <div className='text-error text-sm font-medium text-center py-4 flex items-center'>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-error">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={ 1.5 } stroke="currentColor" className="w-8 h-8 text-error">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                     </svg>
-                    <span>{`${ cardError } Please Try Again!`}</span>
+                    <span>{ `${ cardError } Please Try Again!` }</span>
 
                 </div>
             }
